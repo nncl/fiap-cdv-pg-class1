@@ -1,0 +1,88 @@
+﻿.carousel-inner > .item > img {
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* para o destaque do menu */
+.registro {
+    display: block;
+    position: absolute;
+    top: 448px;
+    right: 32px;
+    width: 160px;
+    height: 160px;
+    padding-top: 60px;
+    opacity: 0.8;
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* Criação do círculo */
+    -ms-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    -webkit-text-shadow: 0 1px 0 #000;
+    -moz-text-shadow: 0 1px 0 #000;
+    text-shadow: 0 1px 0 #000;
+    /* Efeitos de rotação do texto no círculo */
+    -ms-transform: rotate(6deg);
+    -webkit-transform: rotate(6deg);
+    -moz-transform: rotate(6deg);
+    transform: rotate(6deg);
+    /* Efeitos de Gradiente */
+    background: -ms-linear-gradient(top, #a80000 0%,#740404 100%);
+    background: -webkit-linear-gradient(top, #a80000 0%,#740404 100%);
+    background: -moz-linear-gradient(top, #a80000 0%,#740404 100%);
+    background: linear-gradient(top, #a80000 0%,#740404 100%);
+    -ms-transition: -ms-transform 1s;
+    -moz-transition: -ms-transform 1s;
+    -webkit-transition: -webkit-transform 1s;
+    transition: transform 1s;
+}
+
+    .registro:hover {
+        color: #fff;
+        /* Efeitos do GRadiente ao mover o mouse */
+        background: -ms-linear-gradient(top, #bc0101 0%,#8c0909 100%);
+        background: -webkit-linear-gradient(top, #bc0101 0%,#8c0909 100%);
+        background: -moz-linear-gradient(top, #bc0101 0%,#8c0909 100%);
+        background: linear-gradient(top, #bc0101 0%,#8c0909 100%);
+        -ms-transform: rotate(16deg) scale(1.1,1.1);
+        -webkit-transform: rotate(16deg) scale(1.1,1.1);
+        -moz-transform: rotate(16deg) scale(1.1,1.1);
+        transform: rotate(16deg) scale(1.1,1.1);
+        -ms-transition: -ms-transform 1s;
+        -webkit-transition: -webkit-transform 1s;
+        -moz-transition: -webkit-transform 1s;
+        transition: transform 1s;
+    }
+
+    .registro .free {
+        font-size: 80%;
+    }
+
+@media screen and (max-width: 400px) {
+    .registro {
+        display: none;
+    }
+}
+
+.center-image {
+    text-align: center;
+}
+
+.margin-image {
+    margin: 10px;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #7F7F7F;
+    color: white;
+}
