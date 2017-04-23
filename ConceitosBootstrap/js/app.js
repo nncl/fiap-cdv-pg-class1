@@ -30,6 +30,9 @@ var fSel = document.getElementById("curso"),
     fName = document.getElementById("f_name"),
     fEmail = document.getElementById("f_email");
 
+var last = location.pathname.split("/");
+last = last[last.length - 1];
+
 /**
  * @description
  * Inicializa o IndexedDB.
@@ -80,8 +83,11 @@ var lista = document.getElementById("curso");
  */
 
 var limparLista = function () {
-    while (lista.firstChild) {
-        lista.removeChild(lista.firstChild);
+
+    if (last == "" || last == "index.html") {
+        while (lista.firstChild) {
+            lista.removeChild(lista.firstChild);
+        }
     }
 };
 
@@ -93,11 +99,13 @@ var limparLista = function () {
 var exibirCursos = function () {
     limparLista();
 
-    for (var i = 0; i < cursos.length; i++) {
-        var option = document.createElement("option");
-        option.textContent = cursos[i].titulo;
-        option.setAttribute("value", cursos[i].id);
-        lista.appendChild(option);
+    if (last == "" || last == "index.html") {
+        for (var i = 0; i < cursos.length; i++) {
+            var option = document.createElement("option");
+            option.textContent = cursos[i].titulo;
+            option.setAttribute("value", cursos[i].id);
+            lista.appendChild(option);
+        }
     }
 }();
 
@@ -189,5 +197,17 @@ var displayMessage = function (msg, error) {
         fName.value = null;
         fEmail.value = null;
         fSel.options = [0];
+    }
+};
+
+var displayStudents = function () {
+    // Verifica se a página é a de lista de estudantes inscritos
+    var last = location.pathname.split("/");
+    last = last[last.length - 1];
+
+    if (last == "subscribed.html") {
+        // TODO Carregar estudantes e popular em ul#subscribed-list
+
+
     }
 };
