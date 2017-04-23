@@ -201,13 +201,47 @@ var displayMessage = function (msg, error) {
 };
 
 var displayStudents = function () {
+
+    console.log('displayStudents');
+
     // Verifica se a página é a de lista de estudantes inscritos
     var last = location.pathname.split("/");
     last = last[last.length - 1];
 
     if (last == "subscribed.html") {
-        // TODO Carregar estudantes e popular em ul#subscribed-list
+        // Carregar estudantes e popular em ul#subscribed-list
 
+        var request = window.indexedDB.open("CoursesDB", 2);
+        request.onsuccess = function (event) {
+            db = event.target.result;
+            var trans = db.transaction("Students", "readwrite");
+            var store = trans.objectStore("Students");
 
+            trans.oncomplete = function (evt) {
+                console.log(evt);
+            };
+
+            var cursorRequest = store.openCursor();
+
+            cursorRequest.onerror = function (error) {
+                console.error('Error on cursor request', error);
+            };
+
+            cursorRequest.onsuccess = function (evt) {
+                var cursor = evt.target.result;
+
+                if (cursor) {
+                    var student = cursor.value;
+
+                    $('#subscribed-list')
+                        .append('<li>' +
+                            '<strong>Nome: ' + student.name + '</strong><br/>' +
+                            '<span>Curso: ' + student.title + '</span>' +
+                            '</li>');
+                    cursor.continue();
+                }
+            };
+
+        };
     }
-};
+}();
